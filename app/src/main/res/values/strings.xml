@@ -15,4 +15,8 @@
     <string name="sunrise">Sunrise</string>
     <string name="sunset">Sunset</string>
     <string name="forecast">Forecast</string>
+    <string name="refresh">refresh data</string>
+    <string name="location_turn_str">Turn on location</string>
+    <string name="latitude">latitude</string>
+    <string name="longitude">longitude</string>
 </resources>

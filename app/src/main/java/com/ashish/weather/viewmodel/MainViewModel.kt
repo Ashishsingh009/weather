@@ -39,6 +39,9 @@ open class MainViewModel(application: Application) : AndroidViewModel(applicatio
     private val TAG: String = MainViewModel::class.java.name
 
     @JvmField
+    var pinCode:String ?=null
+
+    @JvmField
     var weatherResponse: MutableLiveData<JSONWeatherSet?>? = null
 
 
@@ -63,7 +66,7 @@ open class MainViewModel(application: Application) : AndroidViewModel(applicatio
         get() {
             val weatherApi = mRetrofit!!.create(WeatherApi::class.java)
             loading!!.value = true
-            weatherApi.getWeatherDetail("dubai,uae", Constant.METRIC, Constant.API_KEY)
+            weatherApi.getWeatherDetail(pinCode, Constant.METRIC, Constant.API_KEY)
                 ?.enqueue(object :
                     Callback<JSONWeatherSet?> {
                     override fun onResponse(

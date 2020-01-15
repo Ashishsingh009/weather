@@ -59,9 +59,9 @@
 
                 <TextView
                     android:id="@+id/temperature"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text='@{String.valueOf(weatherSet.main.temp)}'
+                    android:text='@{"Current Temp "+String.valueOf(weatherSet.main.temp)}'
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +71,9 @@
                     android:id="@+id/datetime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text='@{"Last update Time \n "+Constant.getTimeMilliSec(weatherSet.dt)}'
                     android:textColor="@color/white"
+
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
