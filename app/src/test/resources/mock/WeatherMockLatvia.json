@@ -1,0 +1,43 @@
+﻿{
+  "coord": {
+    "lon": 25,
+    "lat": 57
+  },
+  "weather": [
+    {
+      "id": 804,
+      "main": "Clouds",
+      "description": "overcast clouds",
+      "icon": "04d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 1.61,
+    "feels_like": -4.12,
+    "temp_min": 1.11,
+    "temp_max": 2,
+    "pressure": 1015,
+    "humidity": 100
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 5.7,
+    "deg": 170
+  },
+  "clouds": {
+    "all": 90
+  },
+  "dt": 1579000058,
+  "sys": {
+    "type": 1,
+    "id": 1876,
+    "country": "LV",
+    "sunrise": 1578984541,
+    "sunset": 1579010888
+  },
+  "timezone": 7200,
+  "id": 458258,
+  "name": "Latvia",
+  "cod": 200
+}

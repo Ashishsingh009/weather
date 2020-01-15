@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ashish.weather.view.MainActivity">
+    <item
+        android:id="@+id/menu_forecast"
+        android:orderInCategory="100"
+        android:title="@string/forecast"
+        app:showAsAction="never" />
+</menu>
