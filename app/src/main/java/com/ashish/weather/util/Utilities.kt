@@ -1,8 +1,13 @@
 package com.ashish.weather.util
 
 import android.content.Context
+import android.location.Address
+import android.location.Geocoder
+import android.location.LocationManager
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import java.util.*
+
 
 class Utilities {
 
@@ -19,6 +24,24 @@ class Utilities {
                     }
                 } ?: false
             }
+        }
+
+        @JvmStatic
+        fun isLocationEnabled(context: Context): Boolean {
+            var locationManager: LocationManager =
+                context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+            return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
+                LocationManager.NETWORK_PROVIDER
+            )
+        }
+
+        @JvmStatic
+        fun getPinCode(context: Context, latitude: Double, longitude: Double): String {
+            val geoCoder = Geocoder(context, Locale.getDefault())
+            val addresses: List<Address> = geoCoder.getFromLocation(latitude, longitude, 1)
+
+
+            return addresses[0].adminArea
         }
     }
 }

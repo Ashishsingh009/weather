@@ -37,3 +37,10 @@ file->new->open from versioncontrol->git
 ```
 Build the project.
 ```
+
+
+
+
+## Authors
+
+* **Ashish Singh** - *Complete work* - [AshishSingh](https://github.com/Ashishsingh009)

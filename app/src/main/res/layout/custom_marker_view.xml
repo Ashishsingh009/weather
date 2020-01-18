@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:background="@color/white"
-    android:layout_height="wrap_content">
+    android:layout_height="40dp"
+    android:background="@drawable/marker2"
+    tools:ignore="Overdraw">
 
     <TextView
-        android:id="@+id/markerChartTxt"
+        android:id="@+id/tvContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:text=""
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
         android:ellipsize="end"
         android:singleLine="true"
-        android:text="@string/more_detail_str"
-        android:layout_gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
-        android:textStyle="bold"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
-        />
-</LinearLayout>
+</RelativeLayout>
+</layout>

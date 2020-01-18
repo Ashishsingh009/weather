@@ -39,5 +39,17 @@ class Constant {
                 e.toString()
             }
         }
+
+        @JvmStatic
+        fun getMonthName(milliSec: Long): String? {
+            return try {
+                val dt = SimpleDateFormat("MMM-dd hh")
+                val netDate = Date(milliSec * 1000)
+
+                dt.format(netDate).toString()
+            } catch (e: Exception) {
+                e.toString()
+            }
+        }
     }
 }
