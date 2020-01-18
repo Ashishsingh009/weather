@@ -1,9 +1,11 @@
-# weatherApp
+# WeatherApp
 ##Android Jetpack ,MVVM and TDD implementations 
 ###for API used weather and forecastApi from  https://openweathermap.org/api
 
 
 ## Getting Started
+* Focus on Android JETPACK https://developer.android.com/jetpack/
+* Android Test Driven development https://developer.android.com/training/testing/fundamentals.
 
 *MVVM Architecture: In MVVM, ViewModel exposes streams of events to which the Views can bind to. Like this, the ViewModel does not need to hold a reference to the View anymore, like the Presenter is. This also means that all the interfaces that the MVP pattern requires, are now dropped.
 
