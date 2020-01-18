@@ -6,6 +6,7 @@
 ## Getting Started
 * Focus on Android JETPACK https://developer.android.com/jetpack/
 * Android Test Driven development https://developer.android.com/training/testing/fundamentals.
+* Used JaCoCo for line coverage tool, that is used to measure how many lines of our code are tested.
 
 *MVVM Architecture: In MVVM, ViewModel exposes streams of events to which the Views can bind to. Like this, the ViewModel does not need to hold a reference to the View anymore, like the Presenter is. This also means that all the interfaces that the MVP pattern requires, are now dropped.
 
@@ -40,6 +41,9 @@ file->new->open from versioncontrol->git
 Build the project.
 ```
 
+## Running the tests
+
+Build the Jacoco report from gradle, Please connect to device and accept the location permission. 
 
 
 
