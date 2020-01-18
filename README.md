@@ -22,7 +22,7 @@
 
 ### Prerequisites
 
-Android Studio3.2 or above
+Android Studio 3.5 or newer.
 
  
 
