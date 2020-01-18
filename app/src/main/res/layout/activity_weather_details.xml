@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -7,7 +8,7 @@
         <variable
             name="weatherSet"
             type="com.ashish.weather.model.JSONWeatherSet" />
-
+        <import type="android.view.View"/>
         <import type="com.ashish.weather.util.Constant" />
         <import type="android.text.TextUtils"/>
 
@@ -39,7 +40,7 @@
                     android:id="@+id/address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{weatherSet.name}'
+                    android:text='@{""+weatherSet.name}'
                     android:textColor="@color/white"
                     android:textSize="@dimen/twenty_four_sp" />
 
@@ -67,7 +68,7 @@
                     android:layout_gravity="center"
                     android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:text='@{weatherSet.weather.get(0).main}'
+                    android:text='@{""+weatherSet.weather.get(0).main}'
                     android:textSize="@dimen/twenty_sp" />
 
                 <TextView
@@ -133,7 +134,8 @@
                             android:layout_width="@dimen/twenty_five_dp"
                             android:layout_height="@dimen/twenty_five_dp"
                             android:src="@drawable/sunrise"
-                            android:tint="@color/white" />
+                            android:tint="@color/white"
+                            tools:ignore="ContentDescription" />
 
                         <Space
                             android:layout_width="wrap_content"
@@ -172,7 +174,8 @@
                             android:layout_width="@dimen/twenty_five_dp"
                             android:layout_height="@dimen/twenty_five_dp"
                             android:src="@drawable/sunset"
-                            android:tint="@color/white" />
+                            android:tint="@color/white"
+                            tools:ignore="ContentDescription" />
 
                         <Space
                             android:layout_width="wrap_content"
@@ -255,7 +258,8 @@
                             android:layout_width="@dimen/twenty_five_dp"
                             android:layout_height="@dimen/twenty_five_dp"
                             android:src="@drawable/pressure"
-                            android:tint="@color/white" />
+                            android:tint="@color/white"
+                            tools:ignore="ContentDescription" />
 
                         <Space
                             android:layout_width="wrap_content"
@@ -331,7 +335,8 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:src="@drawable/info"
-                            android:tint="#FFFFFF" />
+                            android:tint="#FFFFFF"
+                            tools:ignore="ContentDescription" />
 
                         <Space
                             android:layout_width="wrap_content"

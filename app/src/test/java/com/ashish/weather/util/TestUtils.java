@@ -11,7 +11,6 @@ import java.io.InputStreamReader;
 import java.util.Objects;
 
 public class TestUtils {
-    // private static Gson mGson;
     private static TestUtils INSTANCE = new TestUtils();
 
     public static <T> T loadJson(String path) {
@@ -19,13 +18,6 @@ public class TestUtils {
         String json = getFileString(path);
         //noinspection unchecked
         return (T) mGson.fromJson(json, JSONWeatherSet.class);
-    }
-
-    public static <T> T loadggnJson(String path, Gson mGson) {
-        mGson = new Gson();
-        String json = getFileString(path);
-        //noinspection unchecked
-        return (T) mGson.fromJson(json, MainActivity.class);
     }
 
     private static String getFileString(String path) {

@@ -13,6 +13,26 @@ class ConstantTest {
     }
 
     @Test
+    fun getApiKeyNotNull(){
+        Assert.assertNotNull(Constant.BASE_URL)
+    }
+
+    @Test
+    fun getCityNotNull(){
+        Assert.assertNotNull(Constant.CITY_TEMP_API)
+    }
+    @Test
+    fun getCityEqual(){
+        Assert.assertEquals(Constant.CITY_TEMP_API,"data/2.5/weather?")
+    }
+
+    @Test
+    fun getForecastEqual(){
+        Assert.assertEquals(Constant.FORECAST_API,"data/2.5/forecast?")
+    }
+
+
+    @Test
     fun getTimeMilliSec() {
         Assert.assertEquals(Constant.getTimeMilliSec(1578986741),"2020-01-14 11:25")
     }
@@ -21,6 +41,11 @@ class ConstantTest {
     fun getTimeMilliSecIncorrect() {
         Assert.assertNotEquals(Constant.getTimeMilliSec(1578986741),"2020-01-14 13:25")
     }
+    @Test
+    fun getTimeMilliSecNotNull() {
+        Assert.assertNotNull(Constant.getTimeMilliSec(1578986741))
+    }
+
     @Test
     fun getHoursMilliSec() {
         Assert.assertEquals(Constant.getHoursMilliSec(1579001373000),"12:30:00 AM")

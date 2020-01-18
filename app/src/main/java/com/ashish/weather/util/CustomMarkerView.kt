@@ -10,7 +10,7 @@ import com.github.mikephil.charting.highlight.Highlight
 
 class CustomMarkerView : MarkerView {
 
-    private var markerTextView:TextView = findViewById(R.id.markerChartTxt)
+    private var markerTextView:TextView = findViewById(R.id.tvContent)
 
     constructor(context: Context,layoutId:Int) : super(context,layoutId)
 

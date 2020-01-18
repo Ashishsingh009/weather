@@ -39,10 +39,9 @@ class Utilities {
         fun getPinCode(context: Context, latitude: Double, longitude: Double): String {
             val geoCoder = Geocoder(context, Locale.getDefault())
             val addresses: List<Address> = geoCoder.getFromLocation(latitude, longitude, 1)
-            val adminArea = addresses[0].adminArea
 
 
-            return adminArea
+            return addresses[0].adminArea
         }
     }
 }

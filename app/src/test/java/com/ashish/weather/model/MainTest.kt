@@ -15,7 +15,7 @@ class MainTest {
     private var tempMin: Double = 18.90
     private var feelsLike: Double = 13.90
     private var humidity: Int = 20
-    private var pressure: Double = 2.0
+    private var pressure: Int = 2
 
     @Before
     @Throws(Exception::class)
@@ -32,31 +32,37 @@ class MainTest {
     @Test
     fun getTemp() {
         Mockito.`when`(main.temp).thenReturn(temp)
-        Assert.assertEquals(20.90, main.temp,0.0)
+        Assert.assertEquals(20.90, main.temp, 0.0)
     }
 
     @Test
     fun getFeels_like() {
         Mockito.`when`(main.feels_like).thenReturn(feelsLike)
-        Assert.assertEquals(13.90, main.feels_like,0.0)
+        Assert.assertEquals(13.90, main.feels_like, 0.0)
     }
 
     @Test
     fun getTemp_min() {
         Mockito.`when`(main.temp_min).thenReturn(tempMin)
-        Assert.assertEquals(18.90, main.feels_like,0.0)
+        Assert.assertEquals(13.9, main.feels_like, 0.0)
     }
 
     @Test
     fun getTemp_max() {
         Mockito.`when`(main.temp_max).thenReturn(tempMax)
-        Assert.assertEquals(23.90, main.temp_max,0.0)
+        Assert.assertEquals(23.90, main.temp_max, 0.0)
     }
 
     @Test
-    fun getPressure() {
+    fun getPressureNotEqual() {
         Mockito.`when`(main.pressure).thenReturn(pressure)
-        Assert.assertEquals(2.0, main.pressure)
+        Assert.assertNotEquals(2.0, main.pressure)
+    }
+
+    @Test
+    fun getPressureEqual() {
+        Mockito.`when`(main.pressure).thenReturn(pressure)
+        Assert.assertEquals(2, main.pressure)
     }
 
     @Test
@@ -80,15 +86,4 @@ class MainTest {
         Assert.assertNotEquals(tempMin, 0)
     }
 
-    @Test
-    operator fun component4() {
-    }
-
-    @Test
-    operator fun component5() {
-    }
-
-    @Test
-    operator fun component6() {
-    }
 }

@@ -17,6 +17,7 @@ import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.test.espresso.idling.CountingIdlingResource
 import com.ashish.weather.R
 import com.ashish.weather.WeatherApp
 import com.ashish.weather.apis.WeatherApi
@@ -51,7 +52,8 @@ class MainActivity : AppCompatActivity(), OnScreenRefreshListener, View.OnClickL
     private lateinit var jsonForecast: JSONForecast
     private val permissionId = 42
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
-    private lateinit var mAddress:String
+    private lateinit var mAddress: String
+    lateinit var countingIdlingResource: CountingIdlingResource
     @JvmField
     @Inject
     var mRetrofit: Retrofit? = null
@@ -59,6 +61,7 @@ class MainActivity : AppCompatActivity(), OnScreenRefreshListener, View.OnClickL
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initializeInjector()
+        countingIdlingResource = CountingIdlingResource(TAG)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         getToolBar()
 
@@ -67,16 +70,7 @@ class MainActivity : AppCompatActivity(), OnScreenRefreshListener, View.OnClickL
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         getLastLocation()
-        if (Utilities.isNetworkAvailable(this)) {
-            viewModel.getWeatherData
-        } else {
-            Toast.makeText(
-                this@MainActivity,
-                getString(R.string.network_error),
-                Toast.LENGTH_LONG
-            )
-                .show()
-        }
+
 
     }
 
@@ -184,9 +178,27 @@ class MainActivity : AppCompatActivity(), OnScreenRefreshListener, View.OnClickL
                     if (location == null) {
                         requestNewLocationData()
                     } else {
-                        mAddress=Utilities.getPinCode(this@MainActivity,location.latitude,location.longitude)
-                        viewModel.pinCode=mAddress
-                        viewModel.getWeatherData
+                        if (Utilities.isNetworkAvailable(this)) {
+                            mAddress = Utilities.getPinCode(
+                                this@MainActivity,
+                                location.latitude,
+                                location.longitude
+                            )
+                            viewModel.pinCode = mAddress
+                            countingIdlingResource.increment()
+                            viewModel.getWeatherData
+                            countingIdlingResource.decrement()
+
+                        } else {
+                            Toast.makeText(
+                                this@MainActivity,
+                                getString(R.string.network_error),
+                                Toast.LENGTH_LONG
+                            )
+                                .show()
+                        }
+
+
                     }
                 }
             } else {
@@ -216,7 +228,11 @@ class MainActivity : AppCompatActivity(), OnScreenRefreshListener, View.OnClickL
     private val mLocationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult) {
             val mLastLocation: Location = locationResult.lastLocation
-            mAddress=Utilities.getPinCode(this@MainActivity,mLastLocation.latitude,mLastLocation.longitude)
+            mAddress = Utilities.getPinCode(
+                this@MainActivity,
+                mLastLocation.latitude,
+                mLastLocation.longitude
+            )
 
         }
     }
@@ -229,7 +245,7 @@ class MainActivity : AppCompatActivity(), OnScreenRefreshListener, View.OnClickL
                     call: Call<JSONForecast?>,
                     response: Response<JSONForecast?>
                 ) {
-                    val intent = Intent(this@MainActivity, GraphViewActivity::class.java)
+                    val intent = Intent(this@MainActivity, BarChartGraphActivity::class.java)
                     jsonForecast = response.body()!!
                     intent.putExtra(Constant.FORECAST_DATA, jsonForecast as Serializable)
                     startActivity(intent)
@@ -249,9 +265,15 @@ class MainActivity : AppCompatActivity(), OnScreenRefreshListener, View.OnClickL
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-
+//        countingIdlingResource.decrement()
         if (id == R.id.menu_forecast) {
+
             getGraphForeCastData()
+
+
+            return true
+        } else if (id == R.id.refresh_menu) {
+            viewModel.getWeatherData
             return true
         }
         return super.onOptionsItemSelected(item)
@@ -268,6 +290,7 @@ class MainActivity : AppCompatActivity(), OnScreenRefreshListener, View.OnClickL
     override fun onClick(v: View?) {
         if (v?.id == R.id.detailsTxtView) {
             jsonWeatherSet.let {
+                countingIdlingResource.decrement()
                 val intent = Intent(this@MainActivity, WeatherDetailActivity::class.java)
                 intent.putExtra(Constant.PARSE_DATA, jsonWeatherSet as Serializable)
                 startActivity(intent)

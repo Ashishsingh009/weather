@@ -11,6 +11,7 @@ import com.ashish.weather.model.ChartData
 import com.ashish.weather.model.forecast.JSONForecast
 import com.ashish.weather.util.Constant
 import com.ashish.weather.util.CustomMarkerView
+import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
@@ -29,13 +30,16 @@ class GraphViewActivity : AppCompatActivity(), OnChartValueSelectedListener {
     private val xAxisValues = ArrayList<String>()
     private val yAxisValues = ArrayList<String>()
     private lateinit var chart: LineChart
-    private  var data: MutableList<ChartData>?=null
+
+    private lateinit var barChart: BarChart
+    //    private  var data: MutableList<ChartData>?=null
     private lateinit var customMarkerView: CustomMarkerView
+    private var data: MutableList<ChartData> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindingGraphViewBinding = DataBindingUtil.setContentView(this, R.layout.activity_graph_view)
-        chart = bindingGraphViewBinding.lineChart
+        barChart = bindingGraphViewBinding.barChart
         val bundle: Bundle? = intent.extras
         bundle.let {
             bundle?.apply {
@@ -53,10 +57,8 @@ class GraphViewActivity : AppCompatActivity(), OnChartValueSelectedListener {
         val list = jsonForecast.list
 
         for (i in 0 until list.size) {
-            var chartData: ChartData? = null
-            chartData!!.temp = list[i].main.temp.toString()
-            chartData.date = list[i].dt_txt
-            data.let { it!!.add(chartData) }
+            var chartData = ChartData(list[i].main.temp.toString(), list[i].dt_txt)
+            data.let { it.add(chartData) }
 
 
         }
@@ -94,6 +96,26 @@ class GraphViewActivity : AppCompatActivity(), OnChartValueSelectedListener {
             xAxis.isGranularityEnabled = true
             xAxis.granularity = 1f
 
+
+            setOnChartValueSelectedListener(this@GraphViewActivity)
+
+
+
+
+            chart.description.isEnabled = false
+
+            // if more than 60 entries are displayed in the chart, no values will be
+            // drawn
+            // if more than 60 entries are displayed in the chart, no values will be
+// drawn
+            chart.setMaxVisibleValueCount(60)
+
+            // scaling can now only be done on x- and y-axis separately
+            // scaling can now only be done on x- and y-axis separately
+            chart.setPinchZoom(false)
+
+            chart.setDrawGridBackground(false)
+
             description.isEnabled = false
 
             xAxis.gridColor = Color.GRAY
@@ -115,11 +137,11 @@ class GraphViewActivity : AppCompatActivity(), OnChartValueSelectedListener {
 
         // graph's data
         val values = ArrayList<Entry>()
-        if (data!!.size > 0) {
+        if (data.size > 0) {
             for (i in 0 until (data as List<ChartData>).size) {
-                val xValue: String = data!![i].date
-                val yValue: String = data!![i].temp
-                xAxisValues.add(data!![i].date)
+                val xValue: String = data[i].date
+                val yValue: String = data[i].temp
+                xAxisValues.add(data[i].date)
                 values.add(Entry(xValue.toFloat(), yValue.toFloat()))
 
             }
@@ -130,7 +152,7 @@ class GraphViewActivity : AppCompatActivity(), OnChartValueSelectedListener {
         xAxis.run {
             textColor = Color.GRAY
             position = XAxis.XAxisPosition.BOTTOM
-            setLabelCount(data!!.size, false)
+            setLabelCount(data.size, false)
             valueFormatter = getValueFormatter(xAxisValues) as ValueFormatter?
 
         }

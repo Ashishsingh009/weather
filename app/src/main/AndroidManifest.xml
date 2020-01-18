@@ -44,6 +44,7 @@
         </activity>
         <activity android:name=".view.WeatherDetailActivity" />
         <activity android:name=".view.GraphViewActivity" />
+        <activity android:name=".view.BarChartGraphActivity" />
     </application>
 
 </manifest>
