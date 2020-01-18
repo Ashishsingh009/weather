@@ -44,6 +44,11 @@ Build the project.
 ## Running the tests
 
 Build the Jacoco report from gradle, Please connect to device and accept the location permission. 
+Please see the the report for this project.
+* Espresso Test 
+![alt text](https://user-images.githubusercontent.com/2376791/72666325-6ffb5080-3a2a-11ea-85bb-f9ad289c2596.png)
+*Unit Test Cases.
+![alt text](https://user-images.githubusercontent.com/2376791/72666329-77baf500-3a2a-11ea-9303-ebfea7932e71.png)
 
 
 
