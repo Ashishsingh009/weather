@@ -46,16 +46,26 @@ Build the project.
 Build the Jacoco report from gradle, Please connect to device and accept the location permission. 
 Please see the the report for this project.
 * Espresso Test 
+
+
 ![alt text](https://user-images.githubusercontent.com/2376791/72666325-6ffb5080-3a2a-11ea-85bb-f9ad289c2596.png)
+
+
+
 *Unit Test Cases.
+
+
 ![alt text](https://user-images.githubusercontent.com/2376791/72666329-77baf500-3a2a-11ea-9303-ebfea7932e71.png)
 
 *for Forecast Graph.
-![alt text](https://user-images.githubusercontent.com/2376791/72666729-7d1a3e80-3a2e-11ea-88d3-4e3147dfc7dd.png)
 ![alt text](https://user-images.githubusercontent.com/2376791/72666734-81465c00-3a2e-11ea-89e7-ffe96cc68ef9.png)
+![alt text](https://user-images.githubusercontent.com/2376791/72666729-7d1a3e80-3a2e-11ea-88d3-4e3147dfc7dd.png)
+
 
 ## For Bar Chart
 * Reference https://github.com/PhilJay/MPAndroidChart
+
+
 
 ## Authors
 
