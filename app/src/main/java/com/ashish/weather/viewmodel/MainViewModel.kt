@@ -21,7 +21,13 @@ import java.util.*
 import javax.inject.Inject
 
 
-
+/**
+ * MainViewModel class is ViewModel class for MainActivity. Fetch The data from Api and behave on
+ * observer pattern.
+ * and dagger it fetch the data from Api and display
+ * @author:Ashish_Singh
+ *
+ */
 open class MainViewModel(application: Application) : AndroidViewModel(application) {
     @JvmField
     @Inject

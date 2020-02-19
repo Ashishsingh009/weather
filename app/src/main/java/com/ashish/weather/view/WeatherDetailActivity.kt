@@ -13,6 +13,13 @@ import com.ashish.weather.model.JSONWeatherSet
 import com.ashish.weather.util.Constant
 import java.io.Serializable
 
+
+/**
+ * WeatherDetailActivity class is displaying the brief view of the current location.
+ * @author:Ashish_Singh
+ *
+ */
+
 class WeatherDetailActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityWeatherDetailsBinding
     lateinit var countingIdlingResource: CountingIdlingResource
@@ -40,7 +47,7 @@ class WeatherDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         if (v?.id==R.id.graph_chart){
-            var intent = Intent(this@WeatherDetailActivity, GraphViewActivity::class.java)
+            var intent = Intent(this@WeatherDetailActivity, BarChartGraphActivity::class.java)
             startActivity(intent)
         }
     }

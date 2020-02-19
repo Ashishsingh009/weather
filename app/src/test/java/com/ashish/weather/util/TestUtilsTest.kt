@@ -2,6 +2,7 @@ package com.ashish.weather.util
 
 import com.ashish.weather.model.ChartData
 import com.ashish.weather.model.JSONWeatherSet
+import com.ashish.weather.util.TestUtils.*
 import com.google.gson.Gson
 import org.junit.After
 import org.junit.Assert
@@ -21,7 +22,7 @@ class TestUtilsTest {
     @Before
     @Throws(Exception::class)
     fun setUp() {
-        jsonWeatherSet = TestUtils.loadJson<Any>("mock/WeatherMockDubai.json") as JSONWeatherSet
+        jsonWeatherSet = loadJson<Any>("mock/WeatherMockDubai.json") as JSONWeatherSet
         chartData= ChartData("2020-01-18","20")
 
     }

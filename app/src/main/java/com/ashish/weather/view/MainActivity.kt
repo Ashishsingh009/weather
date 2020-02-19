@@ -39,7 +39,9 @@ import java.io.Serializable
 import javax.inject.Inject
 
 /**
- * MainActivity class is the launcher class for this app, is
+ * MainActivity class is the launcher class for this app, with the help of MainViewModel
+ * and dagger it fetch the data from Api and display
+ * @author:Ashish_Singh
  *
  */
 
@@ -289,11 +291,15 @@ class MainActivity : AppCompatActivity(), OnScreenRefreshListener, View.OnClickL
 
     override fun onClick(v: View?) {
         if (v?.id == R.id.detailsTxtView) {
+
+
             jsonWeatherSet.let {
-                countingIdlingResource.decrement()
+
                 val intent = Intent(this@MainActivity, WeatherDetailActivity::class.java)
                 intent.putExtra(Constant.PARSE_DATA, jsonWeatherSet as Serializable)
                 startActivity(intent)
+
+
             }
 
         }

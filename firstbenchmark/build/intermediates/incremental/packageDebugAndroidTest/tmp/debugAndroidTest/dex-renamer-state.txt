@@ -1,0 +1,4 @@
+#Wed Feb 19 12:01:40 GST 2020
+base.0=/Users/c_ashish.singh/Documents/tuts/weatherApi/firstbenchmark/build/intermediates/dex/debugAndroidTest/mergeDexDebugAndroidTest/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
