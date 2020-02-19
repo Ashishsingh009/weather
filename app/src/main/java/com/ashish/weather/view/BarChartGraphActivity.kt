@@ -28,6 +28,13 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.github.mikephil.charting.model.GradientColor
 import com.github.mikephil.charting.utils.MPPointF
 
+/**
+ * BarChartGraphActivity class is displaying the bar chart of forecastApi.
+ * reference:https://github.com/PhilJay/MPAndroidChart
+ * @author:Ashish_Singh
+ *
+ */
+
 class BarChartGraphActivity : AppCompatActivity(), OnChartValueSelectedListener {
     private lateinit var bindingGraphViewBinding: ActivityGraphViewBinding
     private lateinit var jsonForecast: JSONForecast

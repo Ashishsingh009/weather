@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.latvia.firstbenchmark.test" >
+
+    <uses-sdk
+        android:minSdkVersion="18"
+        android:targetSdkVersion="28" />
+
+    <instrumentation
+        android:name="androidx.benchmark.AndroidBenchmarkRunner"
+        android:functionalTest="false"
+        android:handleProfiling="false"
+        android:label="Tests for com.latvia.firstbenchmark.test"
+        android:targetPackage="com.latvia.firstbenchmark.test" />
+
+    <!--
+    This is needed to write benchmark report data to an external directory during instrumented
+    tests to allow the accompanying androidx.benchmark gradle plugin to pull the reports onto host
+     machine after the tests are done running.
+    -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+    <!--
+      Important: disable debugging for accurate performance results
+
+      In a com.android.library project, this flag must be disabled from this
+      manifest, as it is not possible to override this flag from Gradle.
+    -->
+    <application android:debuggable="false" >
+        <uses-library android:name="android.test.runner" />
+        <!-- Activity used to block background content while benchmarks are running -->
+        <activity
+            android:name="androidx.benchmark.IsolationActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
+            android:theme="@android:style/Theme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
+            android:theme="@android:style/Theme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
+            android:theme="@android:style/Theme.Dialog" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

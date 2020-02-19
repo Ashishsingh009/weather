@@ -8,7 +8,6 @@ buildscript {
         maven { url 'https://maven.google.com' }
 
 
-
         jcenter()
 
 
@@ -17,6 +16,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.5.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+        classpath 'androidx.benchmark:benchmark-gradle-plugin:1.0.0-alpha01'
     }
 }
 

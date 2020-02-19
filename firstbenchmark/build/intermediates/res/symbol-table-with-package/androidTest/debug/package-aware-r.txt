@@ -1,0 +1,4 @@
+com.latvia.firstbenchmark.test
+drawable logo
+id clock_state
+layout isolation_activity
