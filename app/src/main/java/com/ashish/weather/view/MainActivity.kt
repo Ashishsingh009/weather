@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity(), OnScreenRefreshListener, View.OnClickL
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private lateinit var mAddress: String
     lateinit var countingIdlingResource: CountingIdlingResource
+
     @JvmField
     @Inject
     var mRetrofit: Retrofit? = null
@@ -69,8 +70,13 @@ class MainActivity : AppCompatActivity(), OnScreenRefreshListener, View.OnClickL
         attachObservers()
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        getLastLocation()
+        //  getLastLocation()
+        inlineFunc()
 
+    }
+
+
+    private fun inlineFunc() {
 
     }
 

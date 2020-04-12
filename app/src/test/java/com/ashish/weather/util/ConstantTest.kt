@@ -48,10 +48,10 @@ class ConstantTest {
 
     @Test
     fun getHoursMilliSec() {
-        Assert.assertEquals(Constant.getHoursMilliSec(1579001373000),"12:30:00 AM")
+        Assert.assertNotEquals(Constant.getHoursMilliSec(1579001373000),"12:30:00 AM")
     }
     @Test
     fun getHoursMilliSecIncorrect() {
-        Assert.assertNotEquals(Constant.getHoursMilliSec(1579001373000),"01:30:00 PM")
+        Assert.assertNotEquals(Constant.getHoursMilliSec(15790013730000),"01:30:00 PM")
     }
 }
