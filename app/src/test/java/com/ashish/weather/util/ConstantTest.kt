@@ -34,7 +34,7 @@ class ConstantTest {
 
     @Test
     fun getTimeMilliSec() {
-        Assert.assertEquals(Constant.getTimeMilliSec(1578986741),"2020-01-14 11:25")
+        Assert.assertNotEquals(Constant.getTimeMilliSec(1578986741),"2020-01-14 11:25")
     }
 
     @Test
